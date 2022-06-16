@@ -39,13 +39,15 @@ export default function Logined({data}) {
           const myuserValue = [user];
           dispatch(myUser(myuserValue));
           router.push(`/employee/${user._id}`); 
+          
         }
         else{
           ()=>checkValue();
         }    
     }); 
-   }, [enterUser])   
+   }, [checkValue, data, dispatch, enterUser, router])   
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    const checkValue = () =>{
     data.map((user, index)=>{
       let userAmount = index + 1;
