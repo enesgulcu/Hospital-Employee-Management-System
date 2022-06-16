@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 
 export async function getServerSideProps(context) {
-  const res = await fetch('http://localhost:3000/api/userLogin');
+  const res = await fetch('https://hospital-employee-management-system.vercel.app/api/userLogin');
    const data = await res.json();
    return {
      props: { data },
@@ -39,15 +39,13 @@ export default function Logined({data}) {
           const myuserValue = [user];
           dispatch(myUser(myuserValue));
           router.push(`/employee/${user._id}`); 
-          
         }
         else{
           ()=>checkValue();
         }    
     }); 
-   }, [checkValue, data, dispatch, enterUser, router])   
+   }, [enterUser])   
 
-   // eslint-disable-next-line react-hooks/exhaustive-deps
    const checkValue = () =>{
     data.map((user, index)=>{
       let userAmount = index + 1;
